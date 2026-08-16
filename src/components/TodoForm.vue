@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useTodoStore } from '../stores/todos'
 
-const store = useTodoStore()
 const text = ref('')
+
+const emit = defineEmits<{
+    add: [text: string]
+}>()
 
 async function submit() {
     if (!text.value.trim()) return
 
-    await store.addTodo(text.value)
+    emit('add', text.value)
 
     text.value = ''
 }

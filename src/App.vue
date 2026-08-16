@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useTodoStore } from './stores/todos'
 import TodoItem from './components/TodoItem.vue'
 import TodoForm from './components/TodoForm.vue'
 
 const store = useTodoStore()
+
+const todoCount = computed(() => store.todos.length)
 
 onMounted(() => {
   store.fetchTodos()
@@ -14,10 +16,11 @@ onMounted(() => {
 <template>
   <main class="container py-5">
     <div class="mx-auto" style="max-width: 700px">
-    <h1 class="mb-4">Todo App</h1>
+      <h1 class="mb-4">Todo App</h1>
+      <p>{{ todoCount }} todos</p>
     </div>
 
-    <TodoForm />
+    <TodoForm @add="store.addTodo"/>
 
     <div class="mt-4">
       <p v-if="store.loading" class="text-muted">Loading...</p>
