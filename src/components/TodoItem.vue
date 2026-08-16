@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class=""card mb-2>
+    <div class="card mb-2">
         <div class="card-body">
             {{ todo.todo }}
         </div>
