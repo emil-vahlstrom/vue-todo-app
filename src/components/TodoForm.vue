@@ -17,7 +17,7 @@ async function submit() {
 </script>
 
 <template>
-    <form @submit.prevent="submit" class="d-flex-gap-2">
+    <form @submit.prevent="submit" class="d-flex gap-2">
         <input
             v-model="text"
             class="form-control"
